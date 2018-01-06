@@ -10,6 +10,7 @@
 
 .citation{
     text-align: center;
+    
 }
 
 .note{
@@ -29,6 +30,8 @@
     text-align: left;
     display: inline-block;
     font-size: 20px;
+    border :1px solid black;
+    padding: 4px;
 }
 body{
     background-color:white;
@@ -37,7 +40,7 @@ body{
     
 }
 li { list-style-position: inside }
-.orange_image{
+.OPEM_image{
     height: 350px;
     width: 500px;
     opacity: 0.7;
@@ -254,7 +257,7 @@ button {
 }
 @media all and (max-width: 1024px) {
     .consola{
-        font-size: 14px;
+        font-size: 13px;
     }
   #login-footer {
         position: relative;
@@ -270,27 +273,27 @@ button {
     width: 90%;
     height: 50%;
 }
-    .orange_image{
+    .OPEM_image{
     width: 90%;
     height: 50%;
 }
 
 .help {
         width: 95%;
-        font-size: 40px;
+        font-size: 28px;
         text-align: center;
         hyphens: auto;
     }
 
     .main_text{
            width: 95%;
-        font-size: 30px;
+        font-size: 28px;
         text-align: center;
         hyphens: auto;
     }
     .functions{
             width: 95%;
-        font-size: 30px;
+        font-size: 28px;
         hyphens: auto;
     }
     .format-title{
