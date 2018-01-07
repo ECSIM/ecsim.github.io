@@ -109,7 +109,7 @@ hr{
 .help {
     width: 80%;
     margin: auto;
-    font-size: 37px;
+    font-size: 33px;
     text-align: justify;
     font-size-adjust: auto;
     hyphens: auto;
@@ -118,7 +118,7 @@ hr{
 .main_text{
     width: 80%;
     margin: auto;
-    font-size: 37px;
+    font-size: 33px;
     text-align: center;
     font-size-adjust: auto;
     hyphens: auto;
@@ -132,7 +132,7 @@ hr{
     hyphens: auto;
 }
 .fomart-title{
-    font-size: 37px;
+    font-size: 33px;
 }
 .help h3{
     text-align: center;
