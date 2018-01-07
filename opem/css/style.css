@@ -12,12 +12,13 @@
     text-align: center;
     
 }
-
+.version{
+    color: darkorange;
+}
 .note{
     text-align: left;
     display: inline-block;
 }
-
 .logo{
     vertical-align: middle;
     margin: auto;
@@ -65,8 +66,8 @@ a:hover{
     opacity: 0.3;
 }
 hr{
-    border-color: darkorange;
-    border-style:double;
+    border-color: black;
+    border-style: groove;
 }
 .fork-pc{
     top: 0;
