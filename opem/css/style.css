@@ -15,10 +15,7 @@
 .version{
     color: darkorange;
 }
-.note{
-    text-align: left;
-    display: inline-block;
-}
+
 .logo{
     vertical-align: middle;
     margin: auto;
@@ -40,7 +37,9 @@ body{
     margin: 0;
     
 }
-li { list-style-position: inside }
+li { 
+    list-style-position: inside;
+}
 .OPEM_image{
     height: 350px;
     width: 500px;
@@ -120,12 +119,20 @@ hr{
     width: 80%;
     margin: auto;
     font-size: 33px;
-    text-align: center;
     font-size-adjust: auto;
     hyphens: auto;
+    text-align: left;
+}
+.center{
+    text-align: center;
 }
 .main_text a{
     text-decoration: none;
+}
+
+.note{
+    text-align: left;
+    display: inline-block;
 }
 .functions{
     width: 80%;
@@ -177,6 +184,7 @@ button {
 #back a:hover {
     cursor: pointer;
 }
+
 
 .donate_image{
     width: 80%;
@@ -263,6 +271,9 @@ button {
     .consola{
         font-size: 13px;
     }
+  #back{
+      font-size: 25px;
+}
   #login-footer {
         position: relative;
         display: none;
@@ -290,9 +301,8 @@ button {
     }
 
     .main_text{
-           width: 95%;
+        width: 95%;
         font-size: 28px;
-        text-align: center;
         hyphens: auto;
     }
     .functions{
