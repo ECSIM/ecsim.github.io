@@ -2,7 +2,7 @@
 function redirect(flag){
     switch(flag){
         case 1:
-            window.open("https://saythanks.io/to/opem");
+            window.open("https://saythanks.io/to/ecsim");
             break;
         case 2:
             swal("Bitocin Wallet","1XGr9qbZjBpUQJJSB6WtgBQbDTgrhPLPA");
@@ -14,7 +14,7 @@ function redirect(flag){
             window.open("https://www.payping.ir/sepandhaghighi");
             break;
         default:
-            window.open("https://saythanks.io/to/opem");
+            window.open("https://saythanks.io/to/ecsim");
             
     }
     
