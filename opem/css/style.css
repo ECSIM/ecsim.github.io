@@ -124,6 +124,9 @@ hr{
     font-size-adjust: auto;
     hyphens: auto;
 }
+.main_text a{
+    text-decoration: none;
+}
 .functions{
     width: 80%;
     margin: auto;
