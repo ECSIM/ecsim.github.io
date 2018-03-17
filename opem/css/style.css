@@ -7,7 +7,9 @@
     src: url("../fonts/consola.ttf");
 }
 
-
+.justify{
+    text-align: justify;
+}
 .citation{
     text-align: center;
     
@@ -268,6 +270,9 @@ button {
     height: 100%;
 }
 @media all and (max-width: 1024px) {
+    .justify{
+        text-align: center;
+    }
     .consola{
         font-size: 13px;
     }
