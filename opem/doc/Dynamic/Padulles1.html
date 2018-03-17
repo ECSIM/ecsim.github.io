@@ -11779,7 +11779,27 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Version-0.6">Version 0.6<a class="anchor-link" href="#Version-0.6">&#182;</a></h3>
+<h3 id="Version-0.7">Version 0.7<a class="anchor-link" href="#Version-0.7">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align:justify;">
+The Padulles dynamic model can predict the transient response of cell voltage, temperature of the cell, hydrogen/oxygen out flow rates and cathode and anode channel temperatures/pressures under sudden change in load current. Hence, a dynamic fuel cell simulation is developed in this model, which incorporates the dynamics of flow and pressure in the anode and cathode channels and mass/ heat transfer transient features in the fuel cell body. This model based on some assumption such; the gases are ideal, the stack is fed with hydrogen and air, temperature is stable at all times, the ratio of pressures between the interior and exterior of the channel is large, The channels that transport gases along the electrodes have a fixed volume, only source of losses is ohmic and Nernst equation can be applied too.
+</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="text-align:justify;">
+In this model, Nernst and fuel cell potential were modeled as a function of oxygen and hydrogen gases partial pressure that can be calculated from independent variables or constants. The partial pressure of gases is proportional to the molar flow of each gas.
+</p>
 </div>
 </div>
 </div>
@@ -11789,8 +11809,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <div style="text-align:center;">
 
-<img src="images/Padulles-Diagram.PNG">  
-<p style="text-align:center;">Fig1. Padulles Dynamic Model Block Diagram </p>
+<img src="images/Padulles-Diagram.jpg">  
+<p style="text-align:center;">Fig1. Padulles-1 Dynamic Model Block Diagram </p>
 
 </div>
 </div>
@@ -12741,6 +12761,7 @@ FC Voltage : 54.40948895930328 V
 PH2 : 2.159388537918463 atm
 PO2 : 2.0915322161021423 atm
 ###########
+Warning : There are errors in the simulations in some of I amounts; please refer to the .opem file for review. If you are confident about this parameters, ignore this error.
 Done!
 </pre>
 </div>
