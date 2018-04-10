@@ -11779,7 +11779,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Version-0.7">Version 0.7<a class="anchor-link" href="#Version-0.7">&#182;</a></h3>
+<h3 id="Version-0.8">Version 0.8<a class="anchor-link" href="#Version-0.8">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -12120,6 +12120,24 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$P_{Thermal}=i\times(N \times E_{th}-V_{Stack})$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$E_{th}=\frac{-\Delta H}{nF}=1.23V$$</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
@@ -12154,6 +12172,39 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Power_Thermal_Calc</span><span class="p">(</span><span class="n">VStack</span><span class="o">=</span><span class="n">FC_Voltage</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">88</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>107.50228129928763</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12173,7 +12224,7 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Efficiency_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">FC_Voltage</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">88</span><span class="p">)</span>
@@ -12189,7 +12240,7 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -12203,6 +12254,145 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Linear-Approximation">Linear Approximation<a class="anchor-link" href="#Linear-Approximation">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. For most fuel cells and their practical operating range, a linear approximation is actually a very good fit.
+A linear polarization curve has the following form:
+$$V_{cell}=V_0-kI$$
+where V0 is the intercept (actual open circuit voltage is always higher) and k is the slope of the curve.</p>
+<ul>
+<li>Notice : <a href="https://en.wikipedia.org/wiki/Simple_linear_regression">Simple linear regression</a> used for this approximation</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table style="text-align:center;">
+    <tr>
+        <td>$$Parameter$$</td>
+        <td>$$Description$$</td>
+        <td>$$Unit$$</td>
+    </tr> 
+    <tr>
+        <td>$$V_0$$</td>
+        <td style="text-align:center;">Intercept of the curve obtained by linear approximation</td>
+        <td>$$V$$</td>
+    </tr>
+    <tr>
+        <td>$$k$$</td>
+        <td style="text-align:center;">Slope of the curve obtained by linear approximation</td>
+        <td>$$A^{-1}$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{max}$$</td>
+        <td style="text-align:center;">Maximum power obtained by linear approximation</td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$V_{FC}|P_{max}$$</td>
+        <td style="text-align:center;">Cell voltage at maximum power obtained by linear approximation</td>
+        <td>$$V$$</td>
+    </tr>
+
+
+
+
+
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : These parameters are only available in HTML report</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Overall-Parameters">Overall Parameters<a class="anchor-link" href="#Overall-Parameters">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table style="text-align:center;">
+    <tr>
+        <td>$$Parameter$$</td>
+        <td>$$Description$$</td>
+        <td>$$Unit$$</td>
+    </tr> 
+    <tr>
+        <td>$$\eta|P_{Max}$$</td>
+        <td style="text-align:center;">Cell efficiency at maximum power</td>
+        <td>$$--$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Max}$$</td>
+        <td style="text-align:center;">Maximum power </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Elec} $$</td>
+        <td style="text-align:center;">Total electrical power </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Thermal} $$</td>
+        <td style="text-align:center;">Total thermal power   </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$V_{FC}|P_{Max}$$</td>
+        <td style="text-align:center;">Cell voltage at maximum power </td>
+        <td>$$V$$</td>
+    </tr>
+
+
+
+
+
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Notice : P(Thermal) &amp; P(Elec) calculated by <a href="https://en.wikipedia.org/wiki/Simpson%27s_rule">Simpson's Rule</a></p>
+</li>
+<li><p>Notice : These parameters are only available in HTML report</p>
+</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12225,7 +12415,7 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Test_Vector</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="mi">343</span><span class="p">,</span><span class="s2">&quot;E0&quot;</span><span class="p">:</span><span class="mf">0.6</span><span class="p">,</span><span class="s2">&quot;N0&quot;</span><span class="p">:</span><span class="mi">88</span><span class="p">,</span><span class="s2">&quot;KO2&quot;</span><span class="p">:</span><span class="mf">0.0000211</span><span class="p">,</span><span class="s2">&quot;KH2&quot;</span><span class="p">:</span><span class="mf">0.0000422</span><span class="p">,</span><span class="s2">&quot;tH2&quot;</span><span class="p">:</span><span class="mf">3.37</span><span class="p">,</span><span class="s2">&quot;tO2&quot;</span><span class="p">:</span><span class="mf">6.74</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">:</span><span class="mf">0.04777</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">:</span><span class="mf">0.0136</span><span class="p">,</span><span class="s2">&quot;Rint&quot;</span><span class="p">:</span><span class="mf">0.00303</span><span class="p">,</span><span class="s2">&quot;rho&quot;</span><span class="p">:</span><span class="mf">1.168</span><span class="p">,</span><span class="s2">&quot;qH2&quot;</span><span class="p">:</span><span class="mf">0.0004</span><span class="p">,</span><span class="s2">&quot;i-start&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;i-stop&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;i-step&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Test&quot;</span><span class="p">}</span>
@@ -12249,7 +12439,7 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -12278,13 +12468,53 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;I&#39;: [0,
+<pre>{&#39;EFF&#39;: [None,
+  0.3977513543332525,
+  0.39750655365258875,
+  0.39736185898012566,
+  0.3972581497084044,
+  0.3971768980805572,
+  0.3971098513395853,
+  0.3970526072135646,
+  0.39700253793845613,
+  0.39695794855256433,
+  0.39691768174793257,
+  0.39688091206389015,
+  0.3968470300107991,
+  0.3968155727355017,
+  0.3967861804549145,
+  0.3967585679566162,
+  0.39673250531602267,
+  0.3967078044696878,
+  0.3966843096322109,
+  0.3966618903075967,
+  0.39664043609530514,
+  0.3966198527648516,
+  0.3966000592444172,
+  0.39658098527940633,
+  0.3965625695896912,
+  0.3965447584032809,
+  0.3965275042777518,
+  0.39651076514422556,
+  0.3964945035252972,
+  0.39647868589026086,
+  0.39646328211968823,
+  0.3964482650578333,
+  0.39643361013612227,
+  0.39641929505459833,
+  0.3964052995109346,
+  0.3963916049687393,
+  0.39637819445850625,
+  0.39636505240584513,
+  0.3963521644826228,
+  0.39633951747744234],
+ &#39;I&#39;: [0,
   0.1,
   0.2,
   0.3,
@@ -12324,6 +12554,7 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
   3.7,
   3.8,
   3.9],
+ &#39;K&#39;: -0.03833515487668971,
  &#39;P&#39;: [None,
   5.4603305922868905,
   10.913939937085477,
@@ -12364,6 +12595,127 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
   201.32807925881536,
   206.76265553266293,
   212.1970069412828],
+ &#39;PH2&#39;: [2.169032719858579,
+  2.168785433142166,
+  2.1685381464257527,
+  2.168290859709339,
+  2.1680435729929264,
+  2.1677962862765128,
+  2.1675489995600996,
+  2.1673017128436864,
+  2.1670544261272733,
+  2.16680713941086,
+  2.166559852694447,
+  2.1663125659780333,
+  2.16606527926162,
+  2.165817992545207,
+  2.165570705828794,
+  2.1653234191123807,
+  2.1650761323959675,
+  2.164828845679554,
+  2.164581558963141,
+  2.1643342722467276,
+  2.1640869855303144,
+  2.1638396988139013,
+  2.1635924120974876,
+  2.163345125381075,
+  2.1630978386646613,
+  2.162850551948248,
+  2.162603265231835,
+  2.162355978515422,
+  2.1621086917990087,
+  2.1618614050825955,
+  2.161614118366182,
+  2.1613668316497687,
+  2.1611195449333556,
+  2.1608722582169424,
+  2.1606249715005292,
+  2.160377684784116,
+  2.1601303980677025,
+  2.1598831113512893,
+  2.159635824634876,
+  2.159388537918463],
+ &#39;PO2&#39;: [2.0969773162414582,
+  2.096837698289168,
+  2.096698080336878,
+  2.096558462384588,
+  2.0964188444322978,
+  2.0962792264800076,
+  2.0961396085277175,
+  2.0959999905754274,
+  2.0958603726231373,
+  2.0957207546708467,
+  2.0955811367185566,
+  2.095441518766267,
+  2.0953019008139764,
+  2.0951622828616863,
+  2.095022664909396,
+  2.094883046957106,
+  2.094743429004816,
+  2.094603811052526,
+  2.0944641931002357,
+  2.094324575147945,
+  2.0941849571956554,
+  2.094045339243365,
+  2.0939057212910748,
+  2.0937661033387847,
+  2.0936264853864945,
+  2.0934868674342044,
+  2.0933472494819143,
+  2.093207631529624,
+  2.093068013577334,
+  2.092928395625044,
+  2.0927887776727534,
+  2.0926491597204633,
+  2.0925095417681736,
+  2.092369923815883,
+  2.092230305863593,
+  2.092090687911303,
+  2.0919510699590127,
+  2.0918114520067226,
+  2.0916718340544325,
+  2.0915322161021423],
+ &#39;Ph&#39;: [None,
+  5.36366940771311,
+  10.734060062914523,
+  16.1070491997625,
+  21.4817604832121,
+  26.857777715750554,
+  32.23485576486103,
+  37.61283265720528,
+  42.991593273446995,
+  48.37105154043357,
+  53.751140649643816,
+  59.13180723105608,
+  64.51300766414099,
+  69.89470562733142,
+  75.27687040600905,
+  80.65947568637358,
+  86.04249867234626,
+  91.42591942408212,
+  96.80972035264215,
+  102.19388582728892,
+  107.578401865673,
+  112.96325588612645,
+  118.34843650723809,
+  123.7339333839391,
+  129.11973707214523,
+  134.50583891599396,
+  139.8922309531506,
+  145.27890583470193,
+  150.66585675693213,
+  156.05307740285645,
+  161.4405618918276,
+  166.828304735868,
+  172.21630080164203,
+  177.60454527718562,
+  182.9930336426722,
+  188.38176164462013,
+  193.77072527305054,
+  199.15992074118464,
+  204.54934446733702,
+  209.9389930587172],
+ &#39;Status&#39;: True,
  &#39;V&#39;: [None,
   54.6033059228689,
   54.56969968542738,
@@ -12403,7 +12755,8 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
   54.414798535263735,
   54.41299439427442,
   54.41122514017446,
-  54.40948895930328]}</pre>
+  54.40948895930328],
+ &#39;V0&#39;: 54.539964013494824}</pre>
 </div>
 
 </div>
@@ -12411,10 +12764,21 @@ In this model, Nernst and fuel cell potential were modeled as a function of oxyg
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : "Status", "V0", "K" and "EFF" , new in version 0.8</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Data</span><span class="o">=</span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -12448,6 +12812,7 @@ FC Power : None W
 FC Voltage : None V
 PH2 : 2.169032719858579 atm
 PO2 : 2.0969773162414582 atm
+Power-Thermal : None W
 ###########
 I : 0.1
 E : 54.288313997298886 V
@@ -12456,6 +12821,7 @@ FC Power : 5.4603305922868905 W
 FC Voltage : 54.6033059228689 V
 PH2 : 2.168785433142166 atm
 PO2 : 2.096837698289168 atm
+Power-Thermal : 5.36366940771311 W
 ###########
 I : 0.2
 E : 54.28812240067271 V
@@ -12464,6 +12830,7 @@ FC Power : 10.913939937085477 W
 FC Voltage : 54.56969968542738 V
 PH2 : 2.1685381464257527 atm
 PO2 : 2.096698080336878 atm
+Power-Thermal : 10.734060062914523 W
 ###########
 I : 0.3
 E : 54.287930784251316 V
@@ -12472,6 +12839,7 @@ FC Power : 16.364950800237498 W
 FC Voltage : 54.54983600079166 V
 PH2 : 2.168290859709339 atm
 PO2 : 2.096558462384588 atm
+Power-Thermal : 16.1070491997625 W
 ###########
 I : 0.4
 E : 54.28773914803044 V
@@ -12480,6 +12848,7 @@ FC Power : 21.814239516787904 W
 FC Voltage : 54.535598791969754 V
 PH2 : 2.1680435729929264 atm
 PO2 : 2.0964188444322978 atm
+Power-Thermal : 21.4817604832121 W
 ###########
 I : 0.5
 E : 54.28754749200584 V
@@ -12488,6 +12857,7 @@ FC Power : 27.262222284249443 W
 FC Voltage : 54.524444568498886 V
 PH2 : 2.1677962862765128 atm
 PO2 : 2.0962792264800076 atm
+Power-Thermal : 26.857777715750554 W
 ###########
 I : 0.6
 E : 54.28735581617328 V
@@ -12496,6 +12866,7 @@ FC Power : 32.709144235138965 W
 FC Voltage : 54.515240391898274 V
 PH2 : 2.1675489995600996 atm
 PO2 : 2.0961396085277175 atm
+Power-Thermal : 32.23485576486103 W
 ###########
 I : 0.7
 E : 54.287164120528516 V
@@ -12504,6 +12875,7 @@ FC Power : 38.155167342794705 W
 FC Voltage : 54.507381918278156 V
 PH2 : 2.1673017128436864 atm
 PO2 : 2.0959999905754274 atm
+Power-Thermal : 37.61283265720528 W
 ###########
 I : 0.8
 E : 54.28697240506729 V
@@ -12512,6 +12884,7 @@ FC Power : 43.60040672655301 W
 FC Voltage : 54.50050840819126 V
 PH2 : 2.1670544261272733 atm
 PO2 : 2.0958603726231373 atm
+Power-Thermal : 42.991593273446995 W
 ###########
 I : 0.9
 E : 54.286780669785365 V
@@ -12520,6 +12893,7 @@ FC Power : 49.044948459566434 W
 FC Voltage : 54.49438717729603 V
 PH2 : 2.16680713941086 atm
 PO2 : 2.0957207546708467 atm
+Power-Thermal : 48.37105154043357 W
 ###########
 I : 1.0
 E : 54.28658891467849 V
@@ -12528,6 +12902,7 @@ FC Power : 54.48885935035618 W
 FC Voltage : 54.48885935035618 V
 PH2 : 2.166559852694447 atm
 PO2 : 2.0955811367185566 atm
+Power-Thermal : 53.751140649643816 W
 ###########
 I : 1.1
 E : 54.2863971397424 V
@@ -12536,6 +12911,7 @@ FC Power : 59.93219276894392 W
 FC Voltage : 54.483811608130836 V
 PH2 : 2.1663125659780333 atm
 PO2 : 2.095441518766267 atm
+Power-Thermal : 59.13180723105608 W
 ###########
 I : 1.2
 E : 54.286205344972856 V
@@ -12544,6 +12920,7 @@ FC Power : 65.37499233585899 W
 FC Voltage : 54.4791602798825 V
 PH2 : 2.16606527926162 atm
 PO2 : 2.0953019008139764 atm
+Power-Thermal : 64.51300766414099 W
 ###########
 I : 1.3
 E : 54.286013530365594 V
@@ -12552,6 +12929,7 @@ FC Power : 70.81729437266857 W
 FC Voltage : 54.47484182512967 V
 PH2 : 2.165817992545207 atm
 PO2 : 2.0951622828616863 atm
+Power-Thermal : 69.89470562733142 W
 ###########
 I : 1.4
 E : 54.28582169591637 V
@@ -12560,6 +12938,7 @@ FC Power : 76.25912959399092 W
 FC Voltage : 54.470806852850664 V
 PH2 : 2.165570705828794 atm
 PO2 : 2.095022664909396 atm
+Power-Thermal : 75.27687040600905 W
 ###########
 I : 1.5
 E : 54.28562984162091 V
@@ -12568,6 +12947,7 @@ FC Power : 81.7005243136264 W
 FC Voltage : 54.46701620908427 V
 PH2 : 2.1653234191123807 atm
 PO2 : 2.094883046957106 atm
+Power-Thermal : 80.65947568637358 W
 ###########
 I : 1.6
 E : 54.28543796747497 V
@@ -12576,6 +12956,7 @@ FC Power : 87.14150132765376 W
 FC Voltage : 54.46343832978359 V
 PH2 : 2.1650761323959675 atm
 PO2 : 2.094743429004816 atm
+Power-Thermal : 86.04249867234626 W
 ###########
 I : 1.7
 E : 54.28524607347429 V
@@ -12584,6 +12965,7 @@ FC Power : 92.58208057591786 W
 FC Voltage : 54.46004739759874 V
 PH2 : 2.164828845679554 atm
 PO2 : 2.094603811052526 atm
+Power-Thermal : 91.42591942408212 W
 ###########
 I : 1.8
 E : 54.285054159614596 V
@@ -12592,6 +12974,7 @@ FC Power : 98.02227964735785 W
 FC Voltage : 54.456822026309915 V
 PH2 : 2.164581558963141 atm
 PO2 : 2.0944641931002357 atm
+Power-Thermal : 96.80972035264215 W
 ###########
 I : 1.9
 E : 54.284862225891644 V
@@ -12600,6 +12983,7 @@ FC Power : 103.46211417271105 W
 FC Voltage : 54.45374430142687 V
 PH2 : 2.1643342722467276 atm
 PO2 : 2.094324575147945 atm
+Power-Thermal : 102.19388582728892 W
 ###########
 I : 2.0
 E : 54.28467027230115 V
@@ -12608,6 +12992,7 @@ FC Power : 108.90159813432699 W
 FC Voltage : 54.450799067163494 V
 PH2 : 2.1640869855303144 atm
 PO2 : 2.0941849571956554 atm
+Power-Thermal : 107.578401865673 W
 ###########
 I : 2.1
 E : 54.28447829883886 V
@@ -12616,6 +13001,7 @@ FC Power : 114.34074411387355 W
 FC Voltage : 54.44797338755883 V
 PH2 : 2.1638396988139013 atm
 PO2 : 2.094045339243365 atm
+Power-Thermal : 112.96325588612645 W
 ###########
 I : 2.2
 E : 54.2842863055005 V
@@ -12624,6 +13010,7 @@ FC Power : 119.77956349276191 W
 FC Voltage : 54.44525613307359 V
 PH2 : 2.1635924120974876 atm
 PO2 : 2.0939057212910748 atm
+Power-Thermal : 118.34843650723809 W
 ###########
 I : 2.3
 E : 54.284094292281814 V
@@ -12632,6 +13019,7 @@ FC Power : 125.21806661606087 W
 FC Voltage : 54.4426376591569 V
 PH2 : 2.163345125381075 atm
 PO2 : 2.0937661033387847 atm
+Power-Thermal : 123.7339333839391 W
 ###########
 I : 2.4
 E : 54.28390225917852 V
@@ -12640,6 +13028,7 @@ FC Power : 130.65626292785475 W
 FC Voltage : 54.44010955327281 V
 PH2 : 2.1630978386646613 atm
 PO2 : 2.0936264853864945 atm
+Power-Thermal : 129.11973707214523 W
 ###########
 I : 2.5
 E : 54.28371020618635 V
@@ -12648,6 +13037,7 @@ FC Power : 136.09416108400603 W
 FC Voltage : 54.43766443360241 V
 PH2 : 2.162850551948248 atm
 PO2 : 2.0934868674342044 atm
+Power-Thermal : 134.50583891599396 W
 ###########
 I : 2.6
 E : 54.28351813330103 V
@@ -12656,6 +13046,7 @@ FC Power : 141.5317690468494 W
 FC Voltage : 54.435295787249764 V
 PH2 : 2.162603265231835 atm
 PO2 : 2.0933472494819143 atm
+Power-Thermal : 139.8922309531506 W
 ###########
 I : 2.7
 E : 54.2833260405183 V
@@ -12664,6 +13055,7 @@ FC Power : 146.9690941652981 W
 FC Voltage : 54.432997838999285 V
 PH2 : 2.162355978515422 atm
 PO2 : 2.093207631529624 atm
+Power-Thermal : 145.27890583470193 W
 ###########
 I : 2.8
 E : 54.28313392783386 V
@@ -12672,6 +13064,7 @@ FC Power : 152.40614324306785 W
 FC Voltage : 54.4307654439528 V
 PH2 : 2.1621086917990087 atm
 PO2 : 2.093068013577334 atm
+Power-Thermal : 150.66585675693213 W
 ###########
 I : 2.9
 E : 54.28294179524345 V
@@ -12680,6 +13073,7 @@ FC Power : 157.84292259714354 W
 FC Voltage : 54.428593999015014 V
 PH2 : 2.1618614050825955 atm
 PO2 : 2.092928395625044 atm
+Power-Thermal : 156.05307740285645 W
 ###########
 I : 3.0
 E : 54.282749642742786 V
@@ -12688,6 +13082,7 @@ FC Power : 163.2794381081724 W
 FC Voltage : 54.4264793693908 V
 PH2 : 2.161614118366182 atm
 PO2 : 2.0927887776727534 atm
+Power-Thermal : 161.4405618918276 W
 ###########
 I : 3.1
 E : 54.282557470327596 V
@@ -12696,6 +13091,7 @@ FC Power : 168.71569526413202 W
 FC Voltage : 54.42441782713936 V
 PH2 : 2.1613668316497687 atm
 PO2 : 2.0926491597204633 atm
+Power-Thermal : 166.828304735868 W
 ###########
 I : 3.2
 E : 54.282365277993584 V
@@ -12704,6 +13100,7 @@ FC Power : 174.15169919835796 W
 FC Voltage : 54.42240599948686 V
 PH2 : 2.1611195449333556 atm
 PO2 : 2.0925095417681736 atm
+Power-Thermal : 172.21630080164203 W
 ###########
 I : 3.3
 E : 54.282173065736494 V
@@ -12712,6 +13109,7 @@ FC Power : 179.58745472281433 W
 FC Voltage : 54.420440825095255 V
 PH2 : 2.1608722582169424 atm
 PO2 : 2.092369923815883 atm
+Power-Thermal : 177.60454527718562 W
 ###########
 I : 3.4
 E : 54.28198083355201 V
@@ -12720,6 +13118,7 @@ FC Power : 185.02296635732776 W
 FC Voltage : 54.41851951686111 V
 PH2 : 2.1606249715005292 atm
 PO2 : 2.092230305863593 atm
+Power-Thermal : 182.9930336426722 W
 ###########
 I : 3.5
 E : 54.28178858143586 V
@@ -12728,6 +13127,7 @@ FC Power : 190.45823835537988 W
 FC Voltage : 54.41663953010853 V
 PH2 : 2.160377684784116 atm
 PO2 : 2.092090687911303 atm
+Power-Thermal : 188.38176164462013 W
 ###########
 I : 3.6
 E : 54.281596309383765 V
@@ -12736,6 +13136,7 @@ FC Power : 195.89327472694944 W
 FC Voltage : 54.414798535263735 V
 PH2 : 2.1601303980677025 atm
 PO2 : 2.0919510699590127 atm
+Power-Thermal : 193.77072527305054 W
 ###########
 I : 3.7
 E : 54.281404017391424 V
@@ -12744,6 +13145,7 @@ FC Power : 201.32807925881536 W
 FC Voltage : 54.41299439427442 V
 PH2 : 2.1598831113512893 atm
 PO2 : 2.0918114520067226 atm
+Power-Thermal : 199.15992074118464 W
 ###########
 I : 3.8
 E : 54.28121170545457 V
@@ -12752,6 +13154,7 @@ FC Power : 206.76265553266293 W
 FC Voltage : 54.41122514017446 V
 PH2 : 2.159635824634876 atm
 PO2 : 2.0916718340544325 atm
+Power-Thermal : 204.54934446733702 W
 ###########
 I : 3.9
 E : 54.28101937356888 V
@@ -12760,6 +13163,7 @@ FC Power : 212.1970069412828 W
 FC Voltage : 54.40948895930328 V
 PH2 : 2.159388537918463 atm
 PO2 : 2.0915322161021423 atm
+Power-Thermal : 209.9389930587172 W
 ###########
 Warning : There are errors in the simulations in some of I amounts; please refer to the .opem file for review. If you are confident about this parameters, ignore this error.
 Done!
@@ -12781,6 +13185,40 @@ Done!
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="p">{},</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Message&#39;: &#39;[Error] Padulles-I Simulation Failed!(Check Your Inputs)&#39;,
+ &#39;Status&#39;: False}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12939,6 +13377,12 @@ Done!
         <td style="text-align:center;">Faraday’s constant</td>
         <td>$$C.kmol^{-1}$$</td>
         <td>$$96484600$$</td>
+    </tr>
+    <tr>
+    <td>$$E_{th}$$</td>
+        <td style="text-align:center;">Theoretical Potential</td>
+        <td>$$V$$</td>
+        <td>$$1.23$$</td>
     </tr>
 
 

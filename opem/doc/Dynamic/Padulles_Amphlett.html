@@ -11779,7 +11779,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Version-0.7">Version 0.7<a class="anchor-link" href="#Version-0.7">&#182;</a></h3>
+<h3 id="Version-0.8">Version 0.8<a class="anchor-link" href="#Version-0.8">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -12523,6 +12523,24 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$P_{Thermal}=i\times(N \times E_{th}-V_{Stack})$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$E_{th}=\frac{-\Delta H}{nF}=1.23V$$</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
@@ -12557,6 +12575,39 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Power_Thermal_Calc</span><span class="p">(</span><span class="n">VStack</span><span class="o">=</span><span class="n">FC_Voltage</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>10.331844426316767</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12576,7 +12627,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Efficiency_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">FC_Voltage</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -12592,7 +12643,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -12606,6 +12657,145 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Linear-Approximation">Linear Approximation<a class="anchor-link" href="#Linear-Approximation">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. For most fuel cells and their practical operating range, a linear approximation is actually a very good fit.
+A linear polarization curve has the following form:
+$$V_{cell}=V_0-kI$$
+where V0 is the intercept (actual open circuit voltage is always higher) and k is the slope of the curve.</p>
+<ul>
+<li>Notice : <a href="https://en.wikipedia.org/wiki/Simple_linear_regression">Simple linear regression</a> used for this approximation</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table style="text-align:center;">
+    <tr>
+        <td>$$Parameter$$</td>
+        <td>$$Description$$</td>
+        <td>$$Unit$$</td>
+    </tr> 
+    <tr>
+        <td>$$V_0$$</td>
+        <td style="text-align:center;">Intercept of the curve obtained by linear approximation</td>
+        <td>$$V$$</td>
+    </tr>
+    <tr>
+        <td>$$k$$</td>
+        <td style="text-align:center;">Slope of the curve obtained by linear approximation</td>
+        <td>$$A^{-1}$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{max}$$</td>
+        <td style="text-align:center;">Maximum power obtained by linear approximation</td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$V_{FC}|P_{max}$$</td>
+        <td style="text-align:center;">Cell voltage at maximum power obtained by linear approximation</td>
+        <td>$$V$$</td>
+    </tr>
+
+
+
+
+
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : These parameters are only available in HTML report</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Overall-Parameters">Overall Parameters<a class="anchor-link" href="#Overall-Parameters">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table style="text-align:center;">
+    <tr>
+        <td>$$Parameter$$</td>
+        <td>$$Description$$</td>
+        <td>$$Unit$$</td>
+    </tr> 
+    <tr>
+        <td>$$\eta|P_{Max}$$</td>
+        <td style="text-align:center;">Cell efficiency at maximum power</td>
+        <td>$$--$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Max}$$</td>
+        <td style="text-align:center;">Maximum power </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Elec} $$</td>
+        <td style="text-align:center;">Total electrical power </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$P_{Thermal} $$</td>
+        <td style="text-align:center;">Total thermal power   </td>
+        <td>$$W$$</td>
+    </tr>
+    <tr>
+        <td>$$V_{FC}|P_{Max}$$</td>
+        <td style="text-align:center;">Cell voltage at maximum power </td>
+        <td>$$V$$</td>
+    </tr>
+
+
+
+
+
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Notice : P(Thermal) &amp; P(Elec) calculated by <a href="https://en.wikipedia.org/wiki/Simpson%27s_rule">Simpson's Rule</a></p>
+</li>
+<li><p>Notice : These parameters are only available in HTML report</p>
+</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12628,7 +12818,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Test_Vector</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span><span class="mf">50.6</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="mf">0.0178</span><span class="p">,</span><span class="s2">&quot;lambda&quot;</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="s2">&quot;JMax&quot;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">,</span><span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="mi">343</span><span class="p">,</span><span class="s2">&quot;E0&quot;</span><span class="p">:</span><span class="mf">1.229</span><span class="p">,</span><span class="s2">&quot;N0&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;KO2&quot;</span><span class="p">:</span><span class="mf">0.0000211</span><span class="p">,</span><span class="s2">&quot;KH2&quot;</span><span class="p">:</span><span class="mf">0.0000422</span><span class="p">,</span><span class="s2">&quot;KH2O&quot;</span><span class="p">:</span><span class="mf">0.000007716</span><span class="p">,</span><span class="s2">&quot;tH2&quot;</span><span class="p">:</span><span class="mf">3.37</span><span class="p">,</span><span class="s2">&quot;tO2&quot;</span><span class="p">:</span><span class="mf">6.74</span><span class="p">,</span><span class="s2">&quot;t1&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;t2&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;tH2O&quot;</span><span class="p">:</span><span class="mf">18.418</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">:</span><span class="mf">0.016</span><span class="p">,</span><span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;rho&quot;</span><span class="p">:</span><span class="mf">1.168</span><span class="p">,</span><span class="s2">&quot;qMethanol&quot;</span><span class="p">:</span><span class="mf">0.0002</span><span class="p">,</span><span class="s2">&quot;CV&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;i-start&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;i-stop&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;i-step&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Test&quot;</span><span class="p">}</span>
@@ -12641,7 +12831,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -12657,13 +12847,52 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;I&#39;: [0.1,
+<pre>{&#39;EFF&#39;: [0.6589193654570529,
+  0.629377818863534,
+  0.6120440436878553,
+  0.5997083306020967,
+  0.5901112348363035,
+  0.582246339352968,
+  0.5755767905806046,
+  0.5697821347125663,
+  0.564655672412507,
+  0.5600562707690275,
+  0.5558832653691355,
+  0.5520623292851136,
+  0.548537017783373,
+  0.5452634554373536,
+  0.5422068606479247,
+  0.539339194118889,
+  0.5366375214822406,
+  0.5340828446480225,
+  0.5316592495454955,
+  0.5293532727253193,
+  0.5271534226603188,
+  0.5250498125090778,
+  0.5230338745789967,
+  0.5210981356038789,
+  0.5192360379260482,
+  0.5174417957708685,
+  0.5157102786607133,
+  0.5140369160418929,
+  0.5124176186550433,
+  0.5108487132409738,
+  0.5093268879567676,
+  0.5078491464607577,
+  0.5064127690649867,
+  0.5050152796886153,
+  0.503654417602863,
+  0.5023281131572472,
+  0.501034466832334,
+  0.4997717310865285,
+  0.49853829456127663],
+ &#39;I&#39;: [0.1,
   0.2,
   0.3,
   0.4,
@@ -12702,6 +12931,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
   3.7,
   3.8,
   3.9],
+ &#39;K&#39;: -0.24141814874622033,
  &#39;P&#39;: [0.5139571050565013,
   0.9818293974271133,
   1.4321830622295815,
@@ -12741,6 +12971,163 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
   14.459854712781162,
   14.813234109404705,
   15.165534920554036],
+ &#39;PH2&#39;: [0.19717074233280188,
+  0.1971566919511875,
+  0.19714264156957312,
+  0.19712859118795872,
+  0.19711454080634436,
+  0.19710049042472996,
+  0.19708644004311557,
+  0.19707238966150117,
+  0.19705833927988675,
+  0.19704428889827239,
+  0.197030238516658,
+  0.1970161881350436,
+  0.19700213775342923,
+  0.19698808737181484,
+  0.19697403699020044,
+  0.19695998660858605,
+  0.19694593622697168,
+  0.19693188584535729,
+  0.1969178354637429,
+  0.19690378508212852,
+  0.19688973470051413,
+  0.19687568431889974,
+  0.19686163393728537,
+  0.19684758355567097,
+  0.19683353317405658,
+  0.19681948279244216,
+  0.19680543241082776,
+  0.1967913820292134,
+  0.196777331647599,
+  0.1967632812659846,
+  0.19674923088437024,
+  0.19673518050275585,
+  0.19672113012114145,
+  0.19670707973952706,
+  0.1966930293579127,
+  0.1966789789762983,
+  0.1966649285946839,
+  0.19665087821306954,
+  0.19663682783145514],
+ &#39;PH2O&#39;: [0.2426831613626925,
+  0.24266586776736396,
+  0.24264857417203542,
+  0.24263128057670688,
+  0.24261398698137834,
+  0.2425966933860498,
+  0.24257939979072127,
+  0.24256210619539273,
+  0.24254481260006414,
+  0.2425275190047356,
+  0.24251022540940706,
+  0.24249293181407852,
+  0.24247563821874998,
+  0.24245834462342142,
+  0.24244105102809288,
+  0.24242375743276434,
+  0.2424064638374358,
+  0.24238917024210727,
+  0.24237187664677873,
+  0.2423545830514502,
+  0.24233728945612165,
+  0.2423199958607931,
+  0.24230270226546458,
+  0.242285408670136,
+  0.24226811507480747,
+  0.2422508214794789,
+  0.24223352788415034,
+  0.2422162342888218,
+  0.24219894069349326,
+  0.24218164709816473,
+  0.2421643535028362,
+  0.24214705990750765,
+  0.2421297663121791,
+  0.24211247271685057,
+  0.24209517912152204,
+  0.2420778855261935,
+  0.24206059193086493,
+  0.2420432983355364,
+  0.24202600474020786],
+ &#39;PO2&#39;: [0.1906263686382979,
+  0.1906184358000996,
+  0.1906105029619013,
+  0.19060257012370302,
+  0.1905946372855047,
+  0.1905867044473064,
+  0.19057877160910808,
+  0.1905708387709098,
+  0.19056290593271147,
+  0.1905549730945132,
+  0.19054704025631486,
+  0.19053910741811658,
+  0.19053117457991825,
+  0.19052324174171997,
+  0.19051530890352164,
+  0.19050737606532336,
+  0.19049944322712503,
+  0.19049151038892673,
+  0.19048357755072845,
+  0.19047564471253012,
+  0.19046771187433184,
+  0.1904597790361335,
+  0.19045184619793523,
+  0.1904439133597369,
+  0.19043598052153862,
+  0.1904280476833403,
+  0.190420114845142,
+  0.19041218200694368,
+  0.1904042491687454,
+  0.19039631633054707,
+  0.1903883834923488,
+  0.19038045065415046,
+  0.19037251781595219,
+  0.19036458497775385,
+  0.19035665213955555,
+  0.19034871930135727,
+  0.19034078646315894,
+  0.19033285362496066,
+  0.19032492078676233],
+ &#39;Ph&#39;: [0.10104289494349877,
+  0.2481706025728869,
+  0.41281693777041856,
+  0.5889100085214584,
+  0.7735661841384167,
+  0.9650871318281099,
+  1.162350723429899,
+  1.3645594793935858,
+  1.5711171796642,
+  1.7815610880015846,
+  1.9955215831328177,
+  2.212696597891336,
+  2.4328346396765976,
+  2.6557230666240987,
+  2.881179730419282,
+  3.1090468573962653,
+  3.339186465145489,
+  3.5714768611417647,
+  3.8058099217357566,
+  4.04208894548502,
+  4.280226936823977,
+  4.520145217344226,
+  4.761772290052799,
+  5.005042901495387,
+  5.24989726044206,
+  5.4962803817667885,
+  5.744141531405379,
+  5.993433753645058,
+  6.244113466022921,
+  6.496140110161214,
+  6.74947584920536,
+  7.0040853043394895,
+  7.259935324267242,
+  7.516994782657924,
+  7.775234399441842,
+  8.034626582544501,
+  8.29514528721884,
+  8.556765890595296,
+  8.819465079445965],
+ &#39;Status&#39;: True,
  &#39;V&#39;: [5.139571050565013,
   4.909146987135566,
   4.773943540765272,
@@ -12779,7 +13166,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
   3.918159282626528,
   3.9080688412922058,
   3.8982195024749227,
-  3.888598697577958]}</pre>
+  3.888598697577958],
+ &#39;V0&#39;: 4.698328442367755}</pre>
 </div>
 
 </div>
@@ -12787,10 +13175,21 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : "Status", "V0", "K" and "EFF" , new in version 0.8</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Data</span><span class="o">=</span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -12826,6 +13225,7 @@ Loss : 0.1857688897416375 V
 PH2 : 0.19717074233280188 atm
 PH2O : 0.2426831613626925 atm
 PO2 : 0.1906263686382979 atm
+Power-Thermal : 0.10104289494349877 W
 ###########
 I : 0.2
 E : 6.068413961701556 V
@@ -12839,6 +13239,7 @@ Loss : 0.23185339491319815 V
 PH2 : 0.1971566919511875 atm
 PH2O : 0.24266586776736396 atm
 PO2 : 0.1906184358000996 atm
+Power-Thermal : 0.2481706025728869 W
 ###########
 I : 0.3
 E : 6.068412424065923 V
@@ -12852,6 +13253,7 @@ Loss : 0.25889377666013036 V
 PH2 : 0.19714264156957312 atm
 PH2O : 0.24264857417203542 atm
 PO2 : 0.1906105029619013 atm
+Power-Thermal : 0.41281693777041856 W
 ###########
 I : 0.4
 E : 6.068410886366294 V
@@ -12865,6 +13267,7 @@ Loss : 0.278137181533988 V
 PH2 : 0.19712859118795872 atm
 PH2O : 0.24263128057670688 atm
 PO2 : 0.19060257012370302 atm
+Power-Thermal : 0.5889100085214584 W
 ###########
 I : 0.5
 E : 6.068409348602667 V
@@ -12878,6 +13281,7 @@ Loss : 0.2931083433758999 V
 PH2 : 0.19711454080634436 atm
 PH2O : 0.24261398698137834 atm
 PO2 : 0.1905946372855047 atm
+Power-Thermal : 0.7735661841384167 W
 ###########
 I : 0.6
 E : 6.0684078107750326 V
@@ -12891,6 +13295,7 @@ Loss : 0.3053772727643765 V
 PH2 : 0.19710049042472996 atm
 PH2O : 0.2425966933860498 atm
 PO2 : 0.1905867044473064 atm
+Power-Thermal : 0.9650871318281099 W
 ###########
 I : 0.7
 E : 6.068406272883388 V
@@ -12904,6 +13309,7 @@ Loss : 0.3157814612709345 V
 PH2 : 0.19708644004311557 atm
 PH2O : 0.24257939979072127 atm
 PO2 : 0.19057877160910808 atm
+Power-Thermal : 1.162350723429899 W
 ###########
 I : 0.8
 E : 6.068404734927729 V
@@ -12917,6 +13323,7 @@ Loss : 0.32482081683394204 V
 PH2 : 0.19707238966150117 atm
 PH2O : 0.24256210619539273 atm
 PO2 : 0.1905708387709098 atm
+Power-Thermal : 1.3645594793935858 W
 ###########
 I : 0.9
 E : 6.068403196908046 V
@@ -12930,6 +13337,7 @@ Loss : 0.332817790418098 V
 PH2 : 0.19705833927988675 atm
 PH2O : 0.24254481260006414 atm
 PO2 : 0.19056290593271147 atm
+Power-Thermal : 1.5711171796642 W
 ###########
 I : 1.0
 E : 6.068401658824337 V
@@ -12943,6 +13351,7 @@ Loss : 0.3399925493651843 V
 PH2 : 0.19704428889827239 atm
 PH2O : 0.2425275190047356 atm
 PO2 : 0.1905549730945132 atm
+Power-Thermal : 1.7815610880015846 W
 ###########
 I : 1.1
 E : 6.068400120676597 V
@@ -12956,6 +13365,7 @@ Loss : 0.34650213015946807 V
 PH2 : 0.197030238516658 atm
 PH2O : 0.24251022540940706 atm
 PO2 : 0.19054704025631486 atm
+Power-Thermal : 1.9955215831328177 W
 ###########
 I : 1.2
 E : 6.068398582464819 V
@@ -12969,6 +13379,7 @@ Loss : 0.35246248280818626 V
 PH2 : 0.1970161881350436 atm
 PH2O : 0.24249293181407852 atm
 PO2 : 0.19053910741811658 atm
+Power-Thermal : 2.212696597891336 W
 ###########
 I : 1.3
 E : 6.068397044188998 V
@@ -12982,6 +13393,7 @@ Loss : 0.3579616610957378 V
 PH2 : 0.19700213775342923 atm
 PH2O : 0.24247563821874998 atm
 PO2 : 0.19053117457991825 atm
+Power-Thermal : 2.4328346396765976 W
 ###########
 I : 1.4
 E : 6.06839550584913 V
@@ -12995,6 +13407,7 @@ Loss : 0.36306811068755435 V
 PH2 : 0.19698808737181484 atm
 PH2O : 0.24245834462342142 atm
 PO2 : 0.19052324174171997 atm
+Power-Thermal : 2.6557230666240987 W
 ###########
 I : 1.5
 E : 6.068393967445208 V
@@ -13008,6 +13421,7 @@ Loss : 0.367836090878279 V
 PH2 : 0.19697403699020044 atm
 PH2O : 0.24244105102809288 atm
 PO2 : 0.19051530890352164 atm
+Power-Thermal : 2.881179730419282 W
 ###########
 I : 1.6
 E : 6.068392428977227 V
@@ -13021,6 +13435,7 @@ Loss : 0.3723093429699786 V
 PH2 : 0.19695998660858605 atm
 PH2O : 0.24242375743276434 atm
 PO2 : 0.19050737606532336 atm
+Power-Thermal : 3.1090468573962653 W
 ###########
 I : 1.7
 E : 6.068390890445182 V
@@ -13034,6 +13449,7 @@ Loss : 0.376523644576741 V
 PH2 : 0.19694593622697168 atm
 PH2O : 0.2424064638374358 atm
 PO2 : 0.19049944322712503 atm
+Power-Thermal : 3.339186465145489 W
 ###########
 I : 1.8
 E : 6.068389351849069 V
@@ -13047,6 +13463,7 @@ Loss : 0.3805086327188987 V
 PH2 : 0.19693188584535729 atm
 PH2O : 0.24238917024210727 atm
 PO2 : 0.19049151038892673 atm
+Power-Thermal : 3.5714768611417647 W
 ###########
 I : 1.9
 E : 6.068387813188879 V
@@ -13060,6 +13477,7 @@ Loss : 0.38428913334680276 V
 PH2 : 0.1969178354637429 atm
 PH2O : 0.24237187664677873 atm
 PO2 : 0.19048357755072845 atm
+Power-Thermal : 3.8058099217357566 W
 ###########
 I : 2.0
 E : 6.0683862744646095 V
@@ -13073,6 +13491,7 @@ Loss : 0.3878861494414239 V
 PH2 : 0.19690378508212852 atm
 PH2O : 0.2423545830514502 atm
 PO2 : 0.19047564471253012 atm
+Power-Thermal : 4.04208894548502 W
 ###########
 I : 2.1
 E : 6.068384735676256 V
@@ -13086,6 +13505,7 @@ Loss : 0.39131760778515373 V
 PH2 : 0.19688973470051413 atm
 PH2O : 0.24233728945612165 atm
 PO2 : 0.19046771187433184 atm
+Power-Thermal : 4.280226936823977 W
 ###########
 I : 2.2
 E : 6.068383196823811 V
@@ -13099,6 +13519,7 @@ Loss : 0.3945989318506009 V
 PH2 : 0.19687568431889974 atm
 PH2O : 0.2423199958607931 atm
 PO2 : 0.1904597790361335 atm
+Power-Thermal : 4.520145217344226 W
 ###########
 I : 2.3
 E : 6.068381657907269 V
@@ -13112,6 +13533,7 @@ Loss : 0.3977434872382189 V
 PH2 : 0.19686163393728537 atm
 PH2O : 0.24230270226546458 atm
 PO2 : 0.19045184619793523 atm
+Power-Thermal : 4.761772290052799 W
 ###########
 I : 2.4
 E : 6.068380118926627 V
@@ -13125,6 +13547,7 @@ Loss : 0.40076293224327436 V
 PH2 : 0.19684758355567097 atm
 PH2O : 0.242285408670136 atm
 PO2 : 0.1904439133597369 atm
+Power-Thermal : 5.005042901495387 W
 ###########
 I : 2.5
 E : 6.068378579881878 V
@@ -13138,6 +13561,7 @@ Loss : 0.4036674968117403 V
 PH2 : 0.19683353317405658 atm
 PH2O : 0.24226811507480747 atm
 PO2 : 0.19043598052153862 atm
+Power-Thermal : 5.24989726044206 W
 ###########
 I : 2.6
 E : 6.068377040773017 V
@@ -13151,6 +13575,7 @@ Loss : 0.40646620675204853 V
 PH2 : 0.19681948279244216 atm
 PH2O : 0.2422508214794789 atm
 PO2 : 0.1904280476833403 atm
+Power-Thermal : 5.4962803817667885 W
 ###########
 I : 2.7
 E : 6.068375501600038 V
@@ -13164,6 +13589,7 @@ Loss : 0.4091670656092947 V
 PH2 : 0.19680543241082776 atm
 PH2O : 0.24223352788415034 atm
 PO2 : 0.190420114845142 atm
+Power-Thermal : 5.744141531405379 W
 ###########
 I : 2.8
 E : 6.068373962362936 V
@@ -13177,6 +13603,7 @@ Loss : 0.4117772034472342 V
 PH2 : 0.1967913820292134 atm
 PH2O : 0.2422162342888218 atm
 PO2 : 0.19041218200694368 atm
+Power-Thermal : 5.993433753645058 W
 ###########
 I : 2.9
 E : 6.068372423061707 V
@@ -13190,6 +13617,7 @@ Loss : 0.4143029995104737 V
 PH2 : 0.196777331647599 atm
 PH2O : 0.24219894069349326 atm
 PO2 : 0.1904042491687454 atm
+Power-Thermal : 6.244113466022921 W
 ###########
 I : 3.0
 E : 6.0683708836963435 V
@@ -13203,6 +13631,7 @@ Loss : 0.4167501840833496 V
 PH2 : 0.1967632812659846 atm
 PH2O : 0.24218164709816473 atm
 PO2 : 0.19039631633054707 atm
+Power-Thermal : 6.496140110161214 W
 ###########
 I : 3.1
 E : 6.068369344266841 V
@@ -13216,6 +13645,7 @@ Loss : 0.41912392364081075 V
 PH2 : 0.19674923088437024 atm
 PH2O : 0.2421643535028362 atm
 PO2 : 0.1903883834923488 atm
+Power-Thermal : 6.74947584920536 W
 ###########
 I : 3.2
 E : 6.068367804773196 V
@@ -13229,6 +13659,7 @@ Loss : 0.42142889247585713 V
 PH2 : 0.19673518050275585 atm
 PH2O : 0.24214705990750765 atm
 PO2 : 0.19038045065415046 atm
+Power-Thermal : 7.0040853043394895 W
 ###########
 I : 3.3
 E : 6.0683662652154 V
@@ -13242,6 +13673,7 @@ Loss : 0.42366933330170065 V
 PH2 : 0.19672113012114145 atm
 PH2O : 0.2421297663121791 atm
 PO2 : 0.19037251781595219 atm
+Power-Thermal : 7.259935324267242 W
 ###########
 I : 3.4
 E : 6.06836472559345 V
@@ -13255,6 +13687,7 @@ Loss : 0.42584910880445015 V
 PH2 : 0.19670707973952706 atm
 PH2O : 0.24211247271685057 atm
 PO2 : 0.19036458497775385 atm
+Power-Thermal : 7.516994782657924 W
 ###########
 I : 3.5
 E : 6.068363185907339 V
@@ -13268,6 +13701,7 @@ Loss : 0.4279717457210015 V
 PH2 : 0.1966930293579127 atm
 PH2O : 0.24209517912152204 atm
 PO2 : 0.19035665213955555 atm
+Power-Thermal : 7.775234399441842 W
 ###########
 I : 3.6
 E : 6.068361646157063 V
@@ -13281,6 +13715,7 @@ Loss : 0.43004047270610707 V
 PH2 : 0.1966789789762983 atm
 PH2O : 0.2420778855261935 atm
 PO2 : 0.19034871930135727 atm
+Power-Thermal : 8.034626582544501 W
 ###########
 I : 3.7
 E : 6.068360106342617 V
@@ -13294,6 +13729,7 @@ Loss : 0.4320582530100822 V
 PH2 : 0.1966649285946839 atm
 PH2O : 0.24206059193086493 atm
 PO2 : 0.19034078646315894 atm
+Power-Thermal : 8.29514528721884 W
 ###########
 I : 3.8
 E : 6.068358566463993 V
@@ -13307,6 +13743,7 @@ Loss : 0.43402781279781405 V
 PH2 : 0.19665087821306954 atm
 PH2O : 0.2420432983355364 atm
 PO2 : 0.19033285362496066 atm
+Power-Thermal : 8.556765890595296 W
 ###########
 I : 3.9
 E : 6.068357026521189 V
@@ -13320,10 +13757,56 @@ Loss : 0.4359516657886461 V
 PH2 : 0.19663682783145514 atm
 PH2O : 0.24202600474020786 atm
 PO2 : 0.19032492078676233 atm
+Power-Thermal : 8.819465079445965 W
 ###########
 Done!
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : "PrintMode" &amp; "ReportMode" , new in version 0.5</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Dynamic_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="p">{},</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Message&#39;: &#39;[Error] Padulles-Amphlett Simulation Failed!(Check Your Inputs)&#39;,
+ &#39;Status&#39;: False}</pre>
+</div>
+
 </div>
 
 </div>
@@ -13614,6 +14097,12 @@ operation state</td>
         <td style="text-align:center;">Faraday’s constant</td>
         <td>$$C.kmol^{-1}$$</td>
         <td>$$96484600$$</td>
+    </tr>
+    <tr>
+    <td>$$E_{th}$$</td>
+        <td style="text-align:center;">Theoretical Potential</td>
+        <td>$$V$$</td>
+        <td>$$1.23$$</td>
     </tr>
 
 
