@@ -11779,7 +11779,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Version-0.8">Version 0.8<a class="anchor-link" href="#Version-0.8">&#182;</a></h3>
+<h3 id="Version-0.9">Version 0.9<a class="anchor-link" href="#Version-0.9">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -11820,7 +11820,7 @@ It has to be noted that this curve is common to all fuel cells and consequently 
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="n">Vcell_Calc</span>
 <span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell_Calc</span><span class="p">(</span><span class="n">E0</span><span class="o">=</span><span class="mf">1.178</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">i_0</span><span class="o">=</span><span class="mf">0.00654</span><span class="p">,</span><span class="n">i_n</span><span class="o">=</span><span class="mf">0.23</span> <span class="p">,</span><span class="n">i_L</span><span class="o">=</span><span class="mf">100.0</span> <span class="p">,</span><span class="n">R_M</span><span class="o">=</span><span class="mf">0.0018</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="mf">0.0587</span><span class="p">,</span><span class="n">B</span><span class="o">=</span><span class="mf">0.0517</span><span class="p">)</span>
 <span class="n">Vcell</span>
 </pre></div>
@@ -11883,7 +11883,8 @@ It has to be noted that this curve is common to all fuel cells and consequently 
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">VStack</span><span class="o">=</span><span class="n">VStack_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="n">VStack_Calc</span>
+<span class="n">VStack</span><span class="o">=</span><span class="n">VStack_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 <span class="n">VStack</span>
 </pre></div>
 
@@ -11961,7 +11962,8 @@ It has to be noted that this curve is common to all fuel cells and consequently 
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Power</span><span class="o">=</span><span class="n">Power_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="n">Power_Calc</span><span class="p">,</span><span class="n">PowerStack_Calc</span><span class="p">,</span><span class="n">Power_Thermal_Calc</span>
+<span class="n">Power</span><span class="o">=</span><span class="n">Power_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Power</span>
 </pre></div>
 
@@ -12078,7 +12080,8 @@ It has to be noted that this curve is common to all fuel cells and consequently 
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Efficiency_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="n">Efficiency_Calc</span>
+<span class="n">Efficiency_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12118,8 +12121,7 @@ It has to be noted that this curve is common to all fuel cells and consequently 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. For most fuel cells and their practical operating range, a linear approximation is actually a very good fit.
-A linear polarization curve has the following form:
+<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. Linear approximation is a good method to find a rough estimate of the value of polarization function at a particular point. A linear polarization curve has the following form:
 $$V_{cell}=V_0-kI$$
 where V0 is the intercept (actual open circuit voltage is always higher) and k is the slope of the curve.</p>
 <ul>
@@ -12293,7 +12295,8 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Larminie_Dicks</span> <span class="k">import</span> <span class="n">Static_Analysis</span>
+<span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 </div>

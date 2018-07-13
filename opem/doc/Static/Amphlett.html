@@ -11779,7 +11779,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Version-0.8">Version 0.8<a class="anchor-link" href="#Version-0.8">&#182;</a></h3>
+<h3 id="Version-0.9">Version 0.9<a class="anchor-link" href="#Version-0.9">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -11788,7 +11788,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p style="text-align:justify;">
-Amphlett static model is a parametric model that predicting the performance of a solid polymer electrolyte, proton exchange membrane (PEM) fuel cell. Main concepts in the Amphlett model includes Nernst voltage, PEMFC losses (activation polarization loss, ohmic polarization loss and concentration polarization loss), power and efficiency of fuel cell. This parametric model of PEMFC using a combination of mechanistic and empirical approach. The ideal standard potential (Nernst potential) of an H2/O2 FC is 1.229 V with liquid water product. The actual cell potential is decreased from its reference potential because of irreversible losses.
+The Amphlett static model has been used to predict the performance of proton exchange membrane fuel cell. Key concepts in Amphlett static model are Nernst voltage, activation polarization loss, ohmic polarization loss and concentration polarization loss. Amphlett static model has a mechanistic and empirical approach to describe the performance of proton exchange membrane fuel cell. The ideal standard potential of an H2/O2 fuel cell is 1.229 V with liquid water product. The actual cell potential is decreased from its reference potential because of irreversible losses.
 </p>
 </div>
 </div>
@@ -11819,7 +11819,7 @@ Amphlett static model is a parametric model that predicting the performance of a
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Enernst_Calc</span>
 <span class="n">Enernst</span><span class="o">=</span><span class="n">Enernst_Calc</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span><span class="n">PH2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">PO2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">Enernst</span>
 </pre></div>
@@ -11944,7 +11944,8 @@ Amphlett static model is a parametric model that predicting the performance of a
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;XI1=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xi1</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Params</span> <span class="k">import</span> <span class="n">xi1</span><span class="p">,</span><span class="n">xi3</span><span class="p">,</span><span class="n">xi4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;XI1=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xi1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;XI3=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xi3</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;XI4=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">xi4</span><span class="p">))</span>
 </pre></div>
@@ -11979,7 +11980,8 @@ XI4=-0.000193
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">CO2</span><span class="o">=</span><span class="n">CO2_Calc</span><span class="p">(</span><span class="n">PO2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">CO2_Calc</span><span class="p">,</span><span class="n">CH2_Calc</span><span class="p">,</span><span class="n">Xi2_Calc</span>
+<span class="n">CO2</span><span class="o">=</span><span class="n">CO2_Calc</span><span class="p">(</span><span class="n">PO2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">)</span>
 <span class="n">CH2</span><span class="o">=</span><span class="n">CH2_Calc</span><span class="p">(</span><span class="n">PH2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">)</span>
 <span class="n">XI2</span><span class="o">=</span><span class="n">Xi2_Calc</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span><span class="n">PH2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;XI2=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">XI2</span><span class="p">))</span>
@@ -12017,7 +12019,8 @@ CH2=7.330294784824117e-07
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Eta_Act</span><span class="o">=</span><span class="n">Eta_Act_Calc</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span><span class="n">PO2</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">PH2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Eta_Act_Calc</span>
+<span class="n">Eta_Act</span><span class="o">=</span><span class="n">Eta_Act_Calc</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span><span class="n">PO2</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">PH2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">)</span>
 <span class="n">Eta_Act</span>
 </pre></div>
 
@@ -12100,7 +12103,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Rho_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span> <span class="n">lambda_param</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Rho_Calc</span>
+<span class="n">Rho_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span> <span class="n">lambda_param</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12133,7 +12137,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Eta_Ohmic</span><span class="o">=</span><span class="n">Eta_Ohmic_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0178</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span> <span class="n">lambda_param</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">R_elec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Eta_Ohmic_Calc</span>
+<span class="n">Eta_Ohmic</span><span class="o">=</span><span class="n">Eta_Ohmic_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0178</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">343.15</span><span class="p">,</span> <span class="n">lambda_param</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">R_elec</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">Eta_Ohmic</span>
 </pre></div>
 
@@ -12202,7 +12207,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Eta_Conc</span><span class="o">=</span><span class="n">Eta_Conc_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.016</span><span class="p">,</span> <span class="n">JMax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Eta_Conc_Calc</span>
+<span class="n">Eta_Conc</span><span class="o">=</span><span class="n">Eta_Conc_Calc</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">50.6</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.016</span><span class="p">,</span> <span class="n">JMax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">Eta_Conc</span>
 </pre></div>
 
@@ -12271,7 +12277,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Loss</span><span class="o">=</span><span class="n">Loss_Calc</span><span class="p">(</span><span class="n">Eta_Act</span><span class="o">=</span><span class="n">Eta_Act</span><span class="p">,</span><span class="n">Eta_Conc</span><span class="o">=</span><span class="n">Eta_Conc</span><span class="p">,</span><span class="n">Eta_Ohmic</span><span class="o">=</span><span class="n">Eta_Ohmic</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Loss_Calc</span><span class="p">,</span><span class="n">Vcell_Calc</span><span class="p">,</span><span class="n">VStack_Calc</span>
+<span class="n">Loss</span><span class="o">=</span><span class="n">Loss_Calc</span><span class="p">(</span><span class="n">Eta_Act</span><span class="o">=</span><span class="n">Eta_Act</span><span class="p">,</span><span class="n">Eta_Conc</span><span class="o">=</span><span class="n">Eta_Conc</span><span class="p">,</span><span class="n">Eta_Ohmic</span><span class="o">=</span><span class="n">Eta_Ohmic</span><span class="p">)</span>
 <span class="n">Loss</span>
 </pre></div>
 
@@ -12417,7 +12424,8 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Power</span><span class="o">=</span><span class="n">Power_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Power_Calc</span><span class="p">,</span><span class="n">PowerStack_Calc</span><span class="p">,</span><span class="n">Power_Thermal_Calc</span>
+<span class="n">Power</span><span class="o">=</span><span class="n">Power_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Power</span>
 </pre></div>
 
@@ -12534,30 +12542,11 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uF</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Params</span> <span class="k">import</span> <span class="n">uF</span><span class="p">,</span><span class="n">HHV</span>
+<span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Efficiency_Calc</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.95</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12567,7 +12556,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HHV</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uF</span>
 </pre></div>
 
 </div>
@@ -12586,7 +12575,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1.482</pre>
+<pre>0.95</pre>
 </div>
 
 </div>
@@ -12598,6 +12587,39 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">HHV</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.482</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Efficiency_Calc</span><span class="p">(</span><span class="n">Vcell</span><span class="o">=</span><span class="n">Vcell</span><span class="p">)</span>
@@ -12613,7 +12635,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -12640,8 +12662,7 @@ is generally difficult to predict and, therefore, is initially an unknown.</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. For most fuel cells and their practical operating range, a linear approximation is actually a very good fit.
-A linear polarization curve has the following form:
+<p>Sometimes quick calculations regarding fuel cell efficiency–power-size relationships need to be made. Linear approximation is a good method to find a rough estimate of the value of polarization function at a particular point. A linear polarization curve has the following form:
 $$V_{cell}=V_0-kI$$
 where V0 is the intercept (actual open circuit voltage is always higher) and k is the slope of the curve.</p>
 <ul>
@@ -12788,7 +12809,7 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Test_Vector</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="mf">343.15</span><span class="p">,</span><span class="s2">&quot;PH2&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;PO2&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;i-start&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;i-stop&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;i-step&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">:</span><span class="mf">50.6</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="mf">0.0178</span><span class="p">,</span><span class="s2">&quot;lambda&quot;</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;R&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;JMax&quot;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">:</span><span class="mf">0.016</span><span class="p">,</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Test&quot;</span><span class="p">}</span>
@@ -12812,156 +12833,11 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;EFF&#39;: [0.763301282051282,
-  0.6874890758222313,
-  0.6579364138373093,
-  0.6405968621886462,
-  0.628257558614402,
-  0.618658070249436,
-  0.610791539932373,
-  0.60412087931632,
-  0.5983254944546936,
-  0.5931985956180685,
-  0.5885989881753353,
-  0.5844259636913888,
-  0.5806051627342551,
-  0.5770801158862924,
-  0.5738069285336743,
-  0.5707508038668997,
-  0.567883690327933,
-  0.5651826435194095,
-  0.5626286570434207,
-  0.5602058098699769],
- &#39;I&#39;: [0,
-  0.1,
-  0.2,
-  0.3,
-  0.4,
-  0.5,
-  0.6,
-  0.7,
-  0.8,
-  0.9,
-  1.0,
-  1.1,
-  1.2,
-  1.3,
-  1.4,
-  1.5,
-  1.6,
-  1.7,
-  1.8,
-  1.9],
- &#39;K&#39;: -0.11440911221732857,
- &#39;P&#39;: [0.0,
-  0.1072482958282681,
-  0.2052761611172405,
-  0.29979933150428645,
-  0.3920327165753869,
-  0.4825532947945601,
-  0.5717008813767012,
-  0.6597000002134213,
-  0.7467102170794577,
-  0.8328508282477683,
-  0.9182144215535232,
-  1.0028749536944233,
-  1.0868928646385256,
-  1.1703184750174012,
-  1.2531943319175447,
-  1.3355568810485454,
-  1.417437691058521,
-  1.498864370613474,
-  1.5798612689779254,
-  1.6604500204546115],
- &#39;Ph&#39;: [0.0,
-  0.015751704171731908,
-  0.0407238388827595,
-  0.06920066849571356,
-  0.09996728342461313,
-  0.13244670520543989,
-  0.16629911862329885,
-  0.20129999978657856,
-  0.23728978292054237,
-  0.2741491717522317,
-  0.3117855784464768,
-  0.3501250463055768,
-  0.3891071353614744,
-  0.428681524982599,
-  0.4688056680824551,
-  0.5094431189514546,
-  0.5505623089414792,
-  0.5921356293865259,
-  0.6341387310220746,
-  0.6765499795453883],
- &#39;Status&#39;: True,
- &#39;V&#39;: [1.19075,
-  1.072482958282681,
-  1.0263808055862025,
-  0.9993311050142881,
-  0.9800817914384672,
-  0.9651065895891202,
-  0.9528348022945019,
-  0.9424285717334592,
-  0.933387771349322,
-  0.925389809164187,
-  0.9182144215535232,
-  0.9117045033585666,
-  0.905744053865438,
-  0.9002449807826162,
-  0.895138808512532,
-  0.8903712540323636,
-  0.8858985569115755,
-  0.8816849238902789,
-  0.8777007049877363,
-  0.873921063397164],
- &#39;V0&#39;: 1.0551285303936633}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Notice : "Status", "V0", "K" and "EFF" , new in version 0.8</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">opem.Static.Amphlett</span> <span class="k">import</span> <span class="n">Static_Analysis</span>
+<span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13096,7 +12972,7 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Notice : "PrintMode" &amp; "ReportMode" , new in version 0.5</li>
+<li>Notice : "Status", "V0", "K" and "EFF" , new in version 0.8</li>
 </ul>
 
 </div>
@@ -13105,6 +12981,152 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="n">Test_Vector</span><span class="p">,</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;EFF&#39;: [0.763301282051282,
+  0.6874890758222313,
+  0.6579364138373093,
+  0.6405968621886462,
+  0.628257558614402,
+  0.618658070249436,
+  0.610791539932373,
+  0.60412087931632,
+  0.5983254944546936,
+  0.5931985956180685,
+  0.5885989881753353,
+  0.5844259636913888,
+  0.5806051627342551,
+  0.5770801158862924,
+  0.5738069285336743,
+  0.5707508038668997,
+  0.567883690327933,
+  0.5651826435194095,
+  0.5626286570434207,
+  0.5602058098699769],
+ &#39;I&#39;: [0,
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
+  1.0,
+  1.1,
+  1.2,
+  1.3,
+  1.4,
+  1.5,
+  1.6,
+  1.7,
+  1.8,
+  1.9],
+ &#39;K&#39;: -0.11440911221732857,
+ &#39;P&#39;: [0.0,
+  0.1072482958282681,
+  0.2052761611172405,
+  0.29979933150428645,
+  0.3920327165753869,
+  0.4825532947945601,
+  0.5717008813767012,
+  0.6597000002134213,
+  0.7467102170794577,
+  0.8328508282477683,
+  0.9182144215535232,
+  1.0028749536944233,
+  1.0868928646385256,
+  1.1703184750174012,
+  1.2531943319175447,
+  1.3355568810485454,
+  1.417437691058521,
+  1.498864370613474,
+  1.5798612689779254,
+  1.6604500204546115],
+ &#39;Ph&#39;: [0.0,
+  0.015751704171731908,
+  0.0407238388827595,
+  0.06920066849571356,
+  0.09996728342461313,
+  0.13244670520543989,
+  0.16629911862329885,
+  0.20129999978657856,
+  0.23728978292054237,
+  0.2741491717522317,
+  0.3117855784464768,
+  0.3501250463055768,
+  0.3891071353614744,
+  0.428681524982599,
+  0.4688056680824551,
+  0.5094431189514546,
+  0.5505623089414792,
+  0.5921356293865259,
+  0.6341387310220746,
+  0.6765499795453883],
+ &#39;Status&#39;: True,
+ &#39;V&#39;: [1.19075,
+  1.072482958282681,
+  1.0263808055862025,
+  0.9993311050142881,
+  0.9800817914384672,
+  0.9651065895891202,
+  0.9528348022945019,
+  0.9424285717334592,
+  0.933387771349322,
+  0.925389809164187,
+  0.9182144215535232,
+  0.9117045033585666,
+  0.905744053865438,
+  0.9002449807826162,
+  0.895138808512532,
+  0.8903712540323636,
+  0.8858985569115755,
+  0.8816849238902789,
+  0.8777007049877363,
+  0.873921063397164],
+ &#39;V0&#39;: 1.0551285303936633}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Notice : "PrintMode" &amp; "ReportMode" , new in version 0.5</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Static_Analysis</span><span class="p">(</span><span class="n">InputMethod</span><span class="o">=</span><span class="p">{},</span><span class="n">TestMode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">PrintMode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ReportMode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13120,7 +13142,7 @@ where V0 is the intercept (actual open circuit voltage is always higher) and k i
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
