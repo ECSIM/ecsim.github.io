@@ -21,14 +21,12 @@ margin-top: 50px;
     animation-fill-mode: both;
 }
 
-.fade{
-    opacity: 1;
-}
-.fade:hover{
-    opacity: 0.5;
-}
 .journal{
     font-style: italic;
+}
+
+a {
+    text-decoration:
 }
 .color_tag{
 color:Black;
