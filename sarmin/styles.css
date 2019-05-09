@@ -20,6 +20,17 @@ margin-top: 50px;
     animation-duration: 4s;
     animation-fill-mode: both;
 }
+
+.fade:hover{
+    opacity: 0.5;
+}
+.journal{
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+}
 .color_tag{
 color:Black;
 }
