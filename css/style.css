@@ -6,8 +6,8 @@
     vertical-align: middle;
     margin: auto;
     padding: auto;
-    width: 400px;
-    height: 400px;
+    width: 270px;
+    height: 270px;
     margin-top: 10px;
 }
 
@@ -99,6 +99,15 @@ hr{
     margin-top: 5%;
     font-size: 37px;
     text-align: center;
+    font-size-adjust: auto;
+    hyphens: auto;
+}
+.main_text2{
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    font-size: 37px;
+    text-align: left;
     font-size-adjust: auto;
     hyphens: auto;
 }
@@ -234,7 +243,7 @@ button {
 @media all and (max-width: 1024px) {
     .logo{
         width: 250px;
-        width: 250px;
+        height: 250px;
     }
   #login-footer {
         position: relative;
@@ -263,9 +272,15 @@ button {
     }
 
     .main_text{
-           width: 95%;
-        font-size: 40px;
+        width: 97%;
+        font-size: 26px;
         text-align: center;
+        hyphens: auto;
+    }
+    .main_text2{
+        width: 97%;
+        font-size: 26px;
+        text-align: left;
         hyphens: auto;
     }
     .functions{
