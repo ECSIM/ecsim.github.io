@@ -22,14 +22,14 @@ particlesJS('particles-js',
   {
   "particles": {
     "number": {
-      "value": 80,
+      "value": 17,
       "density": {
         "enable": true,
         "value_area": 800
       }
     },
     "color": {
-      "value": "#12e0e8"
+      "value": "#ffbf00"
     },
     "shape": {
       "type": "circle",
